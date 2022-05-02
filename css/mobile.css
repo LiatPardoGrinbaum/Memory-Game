@@ -1,0 +1,7 @@
+.container {
+  flex-direction: column;
+}
+aside {
+  height: 20%;
+  width: 100%;
+}
