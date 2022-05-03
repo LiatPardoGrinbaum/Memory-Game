@@ -185,7 +185,8 @@ function winnerMessage(countCorrect) {
     message.style.display = "block";
     welcome.style.display = "none";
 
-    message.innerText = "congratulations! You won the game!";
+    message.innerText = `congratulations!
+     You won the game!`;
     clearInterval(startTimer);
   }
 }

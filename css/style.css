@@ -45,11 +45,26 @@ main {
 }
 
 .top-text {
+  margin-top: 4rem;
   display: none;
-  font-size: 20px;
-  transition: all 1.5s ease-in-out;
+  font-size: 40px;
+  transition: all 1.3s ease-in-out;
+
+  animation: textAnim 1.5s;
 }
 
+@keyframes textAnim {
+  from {
+    display: none;
+    opacity: 0;
+    transform: rotate(0deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    display: block;
+    transform: rotate(360deg) scale(1);
+  }
+}
 /* sideBar- scores+timer */
 aside {
   display: flex;
