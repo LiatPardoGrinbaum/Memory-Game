@@ -89,11 +89,17 @@ setCards();
 
 let paused = false; // pause status
 
+let firstB = 0; // firstB - first card chosen back div placement
 let firstI = 0; // firtI - first card chosen array placement
 let firstC = 0; // firtC - first card chosen board placement
 // second - second card chosen
+let secondB = 0; // secondB - second card chosen back div placement
 let secondI = 0; // secondI - second card chosen array placement
 let secondC = 0; // secondC - second card chosen board placement
+
+// allrady chosen cards -
+let chosen = [];
+
 //card chosing action -
 function chose() {
   let cards = document.querySelectorAll(".cell"); // the card "button"
@@ -103,40 +109,50 @@ function chose() {
     let obj = randomCards[i];
     let innerCard = innerCards[i];
     card.addEventListener("click", () => {
-      if (!paused) {
+      if (!paused && !chosen.includes(obj.id)) {
         // if the game is not paused
         if (firstI) {
           // if the first card is chosen
           secondI = obj; // setting the second chose to his object
-          secondC = innerCard; // setting the second chose to hit visual
+          secondC = innerCard; // setting the second chose to his visual
           innerCard.style.animation = "flip 1s forwards"; // flip card
           if (firstI.id === secondI.id && firstI.isSec !== secondI.isSec) {
             //if the cards are the same type but not the same card
             pause();
             setTimeout(() => {
-              firstC.style.display = "none"; // make the first card gone
-              secondC.style.display = "none"; // make the second card gone
+              firstC.style.display = "none";
+              secondC.style.display = "none";
+              chosen.push(obj.id);
               firstC = 0; // rteset first card info
               firstI = 0; // rteset first card info
               secondC = 0; // rteset second card info
               secondI = 0; // rteset second card info
+              countCorrect += 1;
+              scoreCorrect.innerText = countCorrect;
+              winnerMessage(countCorrect);
             }, 1000);
-            countCorrect += 1;
-            scoreCorrect.innerText = countCorrect;
-            winnerMessage(countCorrect);
           } else {
             //if the cards aren't the same
-            pause();
-            setTimeout(() => {
+            if (firstI.id !== secondI.id || firstI.isSec !== secondI.isSec) {
+              pause();
+              setTimeout(() => {
+                firstC.style.animation = "flipBack 1s forwards "; // flip the first card back
+                secondC.style.animation = "flipBack 1s forwards "; // flip the second card back
+                firstC = 0; // rteset first card info
+                firstI = 0; // rteset first card info
+                secondC = 0; // rteset second card info
+                secondI = 0; // rteset second card info
+                countInCorrect += 1;
+                scoreInCorrect.innerText = countInCorrect;
+              }, 1000);
+            } else {
               firstC.style.animation = "flipBack 1s forwards "; // flip the first card back
               secondC.style.animation = "flipBack 1s forwards "; // flip the second card back
-              secondC = 0; // rteset first card info
-              secondI = 0; // rteset first card info
-              firstC = 0; // rteset second card info
-              firstI = 0; // rteset second card info
-            }, 1000);
-            countInCorrect += 1;
-            scoreInCorrect.innerText = countInCorrect;
+              firstC = 0; // rteset first card info
+              firstI = 0; // rteset first card info
+              secondC = 0; // rteset second card info
+              secondI = 0; // rteset second card info
+            }
           }
         } else {
           // if the first card isn't chosen

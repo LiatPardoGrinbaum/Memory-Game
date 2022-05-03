@@ -1,5 +1,6 @@
 .container {
   flex-direction: column;
+  justify-content: space-between;
 }
 aside {
   height: 25%;
@@ -8,7 +9,9 @@ aside {
   align-items: flex-start;
   justify-content: center;
 }
-
+main {
+  height: 100%;
+}
 .innerDiv {
   flex-direction: row;
   height: 100%;
@@ -33,7 +36,7 @@ aside {
   font-size: 20px;
 }
 #cards {
-  width: 85%;
+  width: 100%;
   height: 80%;
   gap: 0.6rem;
 }
