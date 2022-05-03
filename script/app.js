@@ -1,3 +1,8 @@
+let countCorrect = 0;
+let countInCorrect = 0;
+const scoreCorrect = document.querySelector(".scoreCorrect");
+const scoreInCorrect = document.querySelector(".scoreInCorrect");
+
 const cardsArr = [
   {
     id: "pic1",
@@ -61,6 +66,7 @@ const cardsArr = [
   },
 ];
 const backImages = document.querySelectorAll(".back");
+
 let randomCards = []; // the new array
 //chosing cards and pushing them into a new array
 function choseCards() {
@@ -115,6 +121,9 @@ function chose() {
               secondC = 0; // rteset second card info
               secondI = 0; // rteset second card info
             }, 1000);
+            countCorrect += 1;
+            scoreCorrect.innerText = countCorrect;
+            winnerMessage(countCorrect);
           } else {
             //if the cards aren't the same
             pause();
@@ -126,6 +135,8 @@ function chose() {
               firstC = 0; // rteset second card info
               firstI = 0; // rteset second card info
             }, 1000);
+            countInCorrect += 1;
+            scoreInCorrect.innerText = countInCorrect;
           }
         } else {
           // if the first card isn't chosen
@@ -142,3 +153,49 @@ async function pause() {
   paused = true;
   setTimeout(() => (paused = false), 1000);
 }
+
+//timer setting:
+
+const minutes = document.querySelector("#minutes");
+const seconds = document.querySelector("#seconds");
+let totalSeconds = 0;
+
+function setTime() {
+  totalSeconds++;
+  seconds.innerHTML = pad(totalSeconds % 60);
+  minutes.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(value) {
+  const valString = value + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+const startTimer = setInterval(setTime, 1000);
+
+//setting winner message
+function winnerMessage(countCorrect) {
+  const message = document.querySelector(".top-text");
+  const welcome = document.querySelector(".welcome");
+  if (countCorrect === 6) {
+    message.style.display = "block";
+    welcome.style.display = "none";
+
+    message.innerText = "congratulations! You won the game!";
+    clearInterval(startTimer);
+  }
+}
+
+// function showAllCards() {
+//   const card = document.querySelectorAll(".card");
+//   for (let i = 0; i < 12; i++) {
+//     let c = randomCards[i];
+//     card[i].style.backgroundImage = `url(${c.src})`;
+//     e.style.display = "block";
+//   }
+// }
+// showAllCards();
