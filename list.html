@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+      }
+      ul {
+        list-style: none;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background-color: gray;
+      }
+      .w {
+        width: 200px;
+        border: 1px black solid;
+        padding: 5px;
+      }
+      li:hover {
+        background-color: rgb(67, 113, 220);
+      }
+      li {
+        margin: 10px 0;
+        padding: 20px;
+      }
+      #button {
+        background-color: rgb(123, 162, 252);
+      }
+      #button:hover {
+        background-color: rgb(76, 120, 225);
+      }
+      #list {
+        background-color: rgb(123, 162, 252);
+      }
+      button:hover {
+        background-color: rgb(228, 0, 0);
+      }
+      button {
+        background-color: red;
+        border: rgb(226, 84, 84) solid 2px;
+        border-radius: 6px;
+        width: 100px;
+        height: 25px;
+        color: white;
+      }
+      h2 {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="w" id="button"><h1>unorder list</h1></div>
+    <div class="w" id="list">
+      <ul>
+        <li>
+          <h2>item1</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item2</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item3</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item4</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item5</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item6</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item7</h2>
+          <button>remove</button>
+        </li>
+        <li>
+          <h2>item8</h2>
+          <button>remove</button>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    let ListBtn = document.querySelector("#button");
+    let list = document.querySelector("#list");
+    let liBtn = document.querySelectorAll("li button");
+    let ul = document.querySelector("ul");
+    let li = document.querySelectorAll("li");
+
+    for (let i = 0; i < li.length; i++) {
+      liBtn[i].addEventListener("click", function () {
+        li[i].remove();
+      });
+    }
+    list.style.display = "none";
+
+    ListBtn.addEventListener("click", function () {
+      if (list.style.display === "none") {
+        list.style.display = "block";
+        ListBtn.style.backgroundColor = "rgb(201, 201, 201)";
+      } else {
+        list.style.display = "none";
+        ListBtn.style.backgroundColor = "rgb(123, 162, 252)";
+      }
+    });
+  </script>
+</html>

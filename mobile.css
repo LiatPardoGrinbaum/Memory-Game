@@ -1,0 +1,16 @@
+#first {
+  flex-direction: column-reverse;
+}
+#first .text {
+  width: 100%;
+}
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+#first img {
+  width: 100%;
+}
+i {
+  padding: 4px;
+}
