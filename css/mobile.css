@@ -32,3 +32,8 @@ aside {
 .reset {
   font-size: 20px;
 }
+#cards {
+  width: 85%;
+  height: 80%;
+  gap: 0.6rem;
+}
