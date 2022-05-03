@@ -18,12 +18,17 @@ aside {
 .correct,
 .inCorrect {
   width: 60px;
-}
-
-.welcome {
   font-size: 18px;
 }
 
+.welcome {
+  font-size: 20px;
+}
+
 .names {
-  font-size: 10px;
+  font-size: 12px;
+}
+.timer,
+.reset {
+  font-size: 20px;
 }
