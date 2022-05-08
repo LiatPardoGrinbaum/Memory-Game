@@ -16,6 +16,6 @@ A pause function which make a suspantion time when cards are flipped so the user
 A timer function.  
 We used setTimeOut and SetInterval functions and added animations to some parts of the games.  
 
-&copy; Snir Ganish , Nour Taha , Liat Pardo Grinbaum &copy;
+&copy; Snir Genish , Nour Taha , Liat Pardo Grinbaum &copy;
 
 
